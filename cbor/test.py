@@ -1,4 +1,4 @@
-# test_cbor_min.py
+# test_cbor.py
 import .cbor as cbor
 
 def rt(x):
@@ -11,13 +11,12 @@ def test_basic():
     rt(True); rt(False)
     rt(0); rt(23); rt(24); rt(255); rt(256); rt(2**32-1); rt(-1); rt(-24); rt(-1000)
     rt(b'\x00\x01\x02hello')
-    rt("سلام دنیا 🌍")
+    rt("HELLO WORLD 🌍")
     rt([1, "a", b"b", True, None, 3.14159])
     rt({"k":"v", "n":123, "b":b"xx", "t":True, "nil":None})
     rt(3.1415926535)
 
 def test_file_roundtrip():
-    # ساختن چند بایت آزمایشی (کوچک نگه داریم)
     data = b"ABCD" * 2048  # ~8KB
     # Encode as CBOR bytes to a buffer
     import uio as io
@@ -39,3 +38,4 @@ def run_all():
 
 if __name__ == "__main__":
     run_all()
+
